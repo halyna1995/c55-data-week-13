@@ -1,3 +1,4 @@
+# Copy to profiles.yml (git-ignored) and export the env vars from ../.env.example
 nyc_taxi:
   target: databricks
   outputs:
