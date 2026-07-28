@@ -15,6 +15,12 @@ logs/
 .user.yml
 **/partial_parse.msgpack
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
 
 # Editor and IDE settings
 .vscode/
