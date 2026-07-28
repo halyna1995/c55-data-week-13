@@ -6,12 +6,15 @@ Thumbs.db
 # hyf
 .hyf/score.json
 
-# dbt / Databricks secrets
+# dbt / Databricks secrets + generated artifacts
 profiles.yml
 task-2/profiles.yml
 dbt_packages/
 target/
 logs/
+.user.yml
+**/partial_parse.msgpack
+
 
 # Editor and IDE settings
 .vscode/
