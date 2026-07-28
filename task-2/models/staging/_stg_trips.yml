@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_trips
+    description: Cleaned yellow taxi trips with one row per generated trip_id.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - pickup_datetime
+              - dropoff_datetime
+              - pickup_location_id
+              - fare_amount
+          config:
+            severity: warn
+    columns:
+      - name: trip_id
+        description: Surrogate key generated from stable trip fields.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: pickup_datetime
+        description: Time when the trip started.
+        data_tests:
+          - not_null
+
+      - name: pickup_location_id
+        description: TLC zone ID where the trip started.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_zones')
+                field: location_id
+              config:
+                severity: warn
+
+      - name: payment_type
+        description: TLC payment code. The large dataset also contains code 0.
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3, 4, 5, 6]

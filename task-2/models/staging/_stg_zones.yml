@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_zones
+    description: One row per TLC taxi zone.
+    columns:
+      - name: location_id
+        description: TLC taxi-zone identifier.
+        data_tests:
+          - unique
+          - not_null
+      - name: borough
+        description: NYC borough name.

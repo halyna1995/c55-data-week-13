@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fct_trips
+    description: Incremental NYC yellow taxi mart enriched with pickup and dropoff zones.
+    columns:
+      - name: trip_id
+        description: Surrogate key used by the Delta merge strategy.
+        data_tests:
+          - not_null
+          - unique
+      - name: pickup_datetime
+        description: Time when the trip started.
+        data_tests:
+          - not_null
+      - name: pickup_borough
+        description: Borough of the pickup zone.
+      - name: dropoff_borough
+        description: Borough of the dropoff zone.

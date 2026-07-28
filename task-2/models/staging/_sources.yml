@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: nyc_taxi
+    description: Raw NYC yellow taxi data in Databricks Unity Catalog.
+    database: hyf
+    schema: nyc_yellow
+    tables:
+      - name: raw_trips
+        description: Yellow taxi trips for 2023-2025, approximately 128 million rows.
+      - name: raw_zones
+        description: Lookup table mapping taxi location IDs to boroughs and zones.
